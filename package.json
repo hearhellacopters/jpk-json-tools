@@ -2,10 +2,16 @@
   "name": "jpk-json-tools",
   "displayName": "jpk-json-tools",
   "description": "Convert between .jpk and JSON files",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hearhellacopters/jpk-json-tools.git"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.102.0"
   },
+  "publisher": "hearhellacopters",
   "icon": "media/JamPak.png",
   "categories": [
     "Other"

@@ -8,4 +8,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### Added
 
+- Updated readme
+
+## [0.0.1] - 07-12-2025
+
+### Added
+
 - Initial release with fallback encryption
