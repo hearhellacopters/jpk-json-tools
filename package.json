@@ -1,0 +1,102 @@
+{
+  "name": "jpk-json-tools",
+  "displayName": "jpk-json-tools",
+  "description": "Convert between .jpk and JSON files",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "icon": "media/JamPak.png",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "jpk.openAsJson",
+        "title": "Open .jpk as JSON"
+      },
+      {
+        "command": "jpk.convertToJson",
+        "title": "Convert .jpk to JSON"
+      },
+      {
+        "command": "jpk.convertToJpk",
+        "title": "Convert JSON to .jpk"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "jpk.convertToJson",
+          "when": "resourceExtname == .jpk",
+          "group": "navigation"
+        },
+        {
+          "command": "jpk.convertToJpk",
+          "when": "resourceExtname == .json",
+          "group": "navigation"
+        }
+      ]
+    },
+    "languages": [
+      {
+        "id": "jpk",
+        "aliases": ["JPK"],
+        "extensions": [".jpk"]
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "JPK Settings",
+      "properties": {
+        "jpk.defaultEndian": {
+          "type": "string",
+          "enum": ["little", "big"],
+          "default": "little",
+          "description": "Default endianness for encoding"
+        },
+        "jpk.encrypt": {
+          "type": "boolean",
+          "default": false,
+          "description": "Encrypts the created JPK files"
+        },
+        "jpk.compress": {
+          "type": "boolean",
+          "default": false,
+          "description": "Compresses the JPK files"
+        },
+        "jpk.CRC32": {
+          "type": "boolean",
+          "default": false,
+          "description": "Adds a CRC32 check to the JPK files"
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.102.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "test": "vscode-test"
+  },
+  "dependencies": {
+    "jampak": "^1.0.4"
+  }
+}
